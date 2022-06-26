@@ -37,7 +37,7 @@ class driver extends Component {
     if (this.state.loading) {
       company_HTML_Table = (
         <tr>
-          <td colSpan="7">
+          <td colSpan="8">
             <h2>Loading....</h2>
           </td>
         </tr>

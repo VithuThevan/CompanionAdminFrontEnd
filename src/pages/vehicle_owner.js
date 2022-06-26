@@ -10,7 +10,7 @@ class driver extends Component {
 
   async componentDidMount() {
     //driver
-    const res = await axios.get("http://127.0.0.1:8000/api/drivers");
+    const res = await axios.get("http://127.0.0.1:8000/api/vehicleowner");
     console.log(res);
     this.setState({
       company: res.data.company,
@@ -32,18 +32,47 @@ class driver extends Component {
   };
 
   render() {
-    let company_HTML_Table;
+    let company_HTML_Table,company_HTML_Table2;
     //company
     if (this.state.loading) {
       company_HTML_Table = (
         <tr>
-          <td colSpan="7">
+          <td colSpan="8">
             <h2>Loading....</h2>
           </td>
         </tr>
       );
     } else {
       company_HTML_Table = this.state.company.map((List) => {
+        return (
+          <tr key={List.id}>
+            <td>{List.id}</td>
+            <td>{List.NIC}</td>
+            <td>{List.Name}</td>
+            <td>{List.Address}</td>
+            <td>{List.Contact_No}</td>
+            <td>{List.Email}</td>
+            <td>
+              <Link
+                to={`edit-driver/${List.id}`}
+                className="btn btn-success btn-sm"
+              >
+                Edit
+              </Link>
+            </td>
+            <td>
+              <button
+                type="button"
+                onClick={(e) => this.deletecompany(e, List.id)}
+                className="btn btn-danger btn-sm"
+              >
+                Delete
+              </button>
+            </td>
+          </tr>
+        );
+      });
+      company_HTML_Table2 = this.state.company.map((List) => {
         return (
           <tr key={List.id}>
             <td>{List.id}</td>
@@ -80,7 +109,7 @@ class driver extends Component {
           <div className="col-md-12">
             <div className="card">
               <div className="card-header">
-                <h4>Details of Drivers</h4>
+                <h4>Details of Vehicle Owners</h4>
                 <Link
                   to={"add-student"}
                   className="btn btn-primary btn-sm float-end"
@@ -103,6 +132,32 @@ class driver extends Component {
                     </tr>
                   </thead>
                   <tbody>{company_HTML_Table}</tbody>
+                </table>
+              </div>
+              <div className="card-header">
+                <h4>Details of Vehicle Owners</h4>
+                <Link
+                  to={"add-student"}
+                  className="btn btn-primary btn-sm float-end"
+                >
+                  Add student
+                </Link>
+              </div>
+              <div className="card-body" style={{ overflow: "auto" }}>
+                <table className="table table-bordered table-striped">
+                  <thead>
+                    <tr>
+                      <th>ID</th>
+                      <th>NIC</th>
+                      <th>Name</th>
+                      <th>Address</th>
+                      <th>Contact_No</th>
+                      <th>Email</th>
+                      <th>Edit</th>
+                      <th>Delete</th>
+                    </tr>
+                  </thead>
+                  <tbody>{company_HTML_Table2}</tbody>
                 </table>
               </div>
             </div>
