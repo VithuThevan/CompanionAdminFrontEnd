@@ -1,0 +1,58 @@
+.marg {
+  margin-top: 40px;
+  /* margin-left: 10px;*/
+}
+
+.cont {
+  margin-top: 20px;
+}
+
+.conatainer {
+  height: 100vh;
+  width: 80%;
+  display: flex;
+  margin-left: 10%;
+  justify-content: center;
+  margin-top: 50px;
+  margin-top: 10px;
+  align-items: center;
+  position: absolute;
+}
+
+.list {
+  height: 100vh;
+  width: 400px;
+  background-color: aqua;
+  margin: 20px;
+}
+
+.list-pending {
+  height: 100vh;
+  width: 400px;
+  /*  background-color: aqua;  */
+  margin: 20px;
+}
+
+.list-ongoing {
+  height: 100vh;
+  width: 400px;
+  /*  background-color: aqua;  */
+  margin: 20px;
+}
+
+.list-complete {
+  height: 100vh;
+  width: 400px;
+  /*  background-color: aqua;  */
+  margin: 20px;
+}
+
+.row1 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.col1 {
+  margin: 10px;
+}
