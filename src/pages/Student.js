@@ -80,12 +80,6 @@ class Student extends Component {
             <div className="card">
               <div className="card-header">
                 <h4>Details of Companies</h4>
-                <Link
-                  to={"add-student"}
-                  className="btn btn-primary btn-sm float-end"
-                >
-                  Add student
-                </Link>
               </div>
               <div className="card-body" style={{ overflow: "auto" }}>
                 <table className="table table-bordered table-striped">

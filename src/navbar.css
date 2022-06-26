@@ -1,13 +1,10 @@
 @import url('http://fonts.cdnfonts.com/css/uber-move-text');
 
-.body{
-    padding: 0%;
-    margin: 0;
-}
+
 
 .navbar {
-    background-color: #ffffff;
-    height: 120px;
+    /* background-color: #ffffff; */
+    /* height: 120px; */
     display: flex;
     justify-content: start;
     align-items: center;
@@ -17,15 +14,8 @@
 .menu-bars{
     margin-left: 2rem;
     font-size: 1rem;
-    background: none;
-    color: white;
-}
-
-.menu-bars1{
-    margin-left: 2rem;
-    font-size: 1rem;
-    background: none;
-    color: purple;
+    /* background: none;
+    color: white; */
 }
 
 .nav-menu{
@@ -34,7 +24,7 @@
     height: 100vh;
     display: flex;
     position: fixed;
-    top: 70px;
+    /* top: 70px; */
     left: -100%;
     transition: 850ms;
     font-family: 'Uber Move Text', sans-serif;
@@ -49,7 +39,7 @@
     display: flex;
     justify-content: start;
     align-items: center;
-    padding: 8px 0px 8px 16px;
+    /* padding: 8px 0px 8px 16px; */
     list-style: none;
     height: 60px;
 }

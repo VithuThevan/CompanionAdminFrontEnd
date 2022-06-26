@@ -66,19 +66,22 @@ class EditDriver extends Component {
             <div className="card">
               <div className="card-header">
                 <h4>Edit Driver Details</h4>
-                <Link to={"/"} className="btn btn-primary btn-sm float-end">
+                <Link
+                  to={"/driver"}
+                  className="btn btn-primary btn-sm float-end"
+                >
                   BACK
                 </Link>
               </div>
               <div className="card-body">
                 <form onSubmit={this.UpdateStudent}>
                   <div className="form-group mb-3">
-                    <label>Company Name</label>
+                    <label>Name</label>
                     <input
                       type="text"
                       id="name"
                       name="name"
-                      pattern="[A-Za-z0-9]+"
+                      pattern="([A-z0-9À-ž\s]){3,}"
                       onChange={this.handleInput}
                       value={this.state.name}
                       className="form-control"
@@ -86,7 +89,7 @@ class EditDriver extends Component {
                     />
                   </div>
                   <div className="form-group mb-3">
-                    <label>Company Address</label>
+                    <label>Address</label>
                     <input
                       type="text"
                       id="address"

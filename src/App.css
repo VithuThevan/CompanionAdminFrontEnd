@@ -1,9 +1,12 @@
 @import url('http://fonts.cdnfonts.com/css/uber-move-text');
 
+
 .App {
   text-align: center;
   font-family: 'Uber Move Text', sans-serif;
+  background-image: none;
 }
+
 
 .App-logo {
   height: 40vmin;
@@ -24,7 +27,7 @@
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
-  color: white;
+  /* color: white; */
 }
 
 .App-link {
@@ -45,6 +48,11 @@
   border: 1px solid #b1395f;
 }
 
+.body{
+  padding: 0%;
+  margin: 0;
+}
+
 .emsg {
   color: #c12020;
   font-weight: bold;
@@ -62,21 +70,20 @@
 }
 
 .driver1{
-    background-color: #ffffff;
-    height: 50px;
+    background-color: rgba(192,192,200, 0.3);
+    height: 65px;
     text-align: left;
-    padding-top: 0;
+    padding-top: 3px;
     width: 40%;
     font-size: 30px;
     padding-left: 30px;
 }
 
 .driver{
-  background-color: #ffffff;
-  height: 20px;
-  margin-bottom: 50px;
+  background-color: rgba(192,192,200, 0.3);
+  height: 65px;
   text-align: center;
-  padding: 0;
+  padding: 10px;
   width: 15%;
   font-size: 30px;
 }

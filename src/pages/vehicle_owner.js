@@ -2,9 +2,10 @@ import axios from "axios";
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import "../App.css";
-class driver extends Component {
+
+class VehicleOwner extends Component {
   state = {
-    driver: [],
+    company: [],
     loading: true,
   };
 
@@ -32,10 +33,17 @@ class driver extends Component {
   };
 
   render() {
-    let company_HTML_Table,company_HTML_Table2;
+    let company_HTML_Table, company_HTML_Table2;
     //company
     if (this.state.loading) {
       company_HTML_Table = (
+        <tr>
+          <td colSpan="8">
+            <h2>Loading....</h2>
+          </td>
+        </tr>
+      );
+      company_HTML_Table2 = (
         <tr>
           <td colSpan="8">
             <h2>Loading....</h2>
@@ -54,7 +62,7 @@ class driver extends Component {
             <td>{List.Email}</td>
             <td>
               <Link
-                to={`edit-driver/${List.id}`}
+                to={`edit-vehicleowner1/${List.id}`}
                 className="btn btn-success btn-sm"
               >
                 Edit
@@ -76,14 +84,14 @@ class driver extends Component {
         return (
           <tr key={List.id}>
             <td>{List.id}</td>
-            <td>{List.NIC}</td>
-            <td>{List.Name}</td>
-            <td>{List.Address}</td>
-            <td>{List.Contact_No}</td>
-            <td>{List.Email}</td>
+            <td>{List.Vehicle_type}</td>
+            <td>{List.Vehicle_brand}</td>
+            <td>{List.Vehicle_color}</td>
+            <td>{List.Vehicle_number}</td>
+            <td>{List.Numberofpassenger}</td>
             <td>
               <Link
-                to={`edit-driver/${List.id}`}
+                to={`edit-vehicleowner/${List.id}`}
                 className="btn btn-success btn-sm"
               >
                 Edit
@@ -110,12 +118,6 @@ class driver extends Component {
             <div className="card">
               <div className="card-header">
                 <h4>Details of Vehicle Owners</h4>
-                <Link
-                  to={"add-student"}
-                  className="btn btn-primary btn-sm float-end"
-                >
-                  Add student
-                </Link>
               </div>
               <div className="card-body" style={{ overflow: "auto" }}>
                 <table className="table table-bordered table-striped">
@@ -135,24 +137,18 @@ class driver extends Component {
                 </table>
               </div>
               <div className="card-header">
-                <h4>Details of Vehicle Owners</h4>
-                <Link
-                  to={"add-student"}
-                  className="btn btn-primary btn-sm float-end"
-                >
-                  Add student
-                </Link>
+                <h4>Details of Vehicles</h4>
               </div>
               <div className="card-body" style={{ overflow: "auto" }}>
                 <table className="table table-bordered table-striped">
                   <thead>
                     <tr>
                       <th>ID</th>
-                      <th>NIC</th>
-                      <th>Name</th>
-                      <th>Address</th>
-                      <th>Contact_No</th>
-                      <th>Email</th>
+                      <th>Vehicle_type</th>
+                      <th>Vehicle_brand</th>
+                      <th>Vehicle_color</th>
+                      <th>Vehicle_number</th>
+                      <th>Number_of_Passengers</th>
                       <th>Edit</th>
                       <th>Delete</th>
                     </tr>
@@ -167,4 +163,4 @@ class driver extends Component {
     );
   }
 }
-export default driver;
+export default VehicleOwner;
