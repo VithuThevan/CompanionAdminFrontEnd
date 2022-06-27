@@ -39,7 +39,7 @@ export default function Complete() {
           data.map(({ id, name, slocation, elocation }) => (
             <li key={id}>
               <div className="bx">
-                <h4>id : {id}</h4>
+                <h5>id : {id}</h5>
                 <h3>
                   Name : <span className="name">{name}</span>
                 </h3>

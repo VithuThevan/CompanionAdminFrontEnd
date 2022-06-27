@@ -1,12 +1,10 @@
-@import url('http://fonts.cdnfonts.com/css/uber-move-text');
-
+@import url("http://fonts.cdnfonts.com/css/uber-move-text");
 
 .App {
   text-align: center;
-  font-family: 'Uber Move Text', sans-serif;
+  font-family: "Uber Move Text", sans-serif;
   background-image: none;
 }
-
 
 .App-logo {
   height: 40vmin;
@@ -48,7 +46,7 @@
   border: 1px solid #b1395f;
 }
 
-.body{
+.body {
   padding: 0%;
   margin: 0;
 }
@@ -59,36 +57,38 @@
 }
 
 .font {
-  font-family: 'Uber Move Text', sans-serif;
-  background-color: #060b26;
-    height: 100px;
-    display: flex;
-    justify-content: start;
-    align-items: center;
-    padding: 0;
-    width: 100%;
+  font-family: "Uber Move Text", sans-serif;
+  /* background-color: #060b26; */
+  height: 100px;
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  padding: 0;
+  width: 100%;
 }
 
-.driver1{
-    background-color: rgba(192,192,200, 0.3);
-    height: 65px;
-    text-align: left;
-    padding-top: 3px;
-    width: 40%;
-    font-size: 30px;
-    padding-left: 30px;
+.driver1 {
+  background-color: rgba(192, 192, 200, 0.3);
+  height: 100px;
+  text-align: left;
+  padding-top: 3px;
+  width: 40%;
+  font-size: 30px;
+  padding-left: 30px;
+  padding-top: 20px;
+  margin-top: 50px;
 }
 
-.driver{
-  background-color: rgba(192,192,200, 0.3);
-  height: 65px;
+.driver {
+  background-color: rgba(192, 192, 200, 0.3);
+  height: 100px;
   text-align: center;
-  padding: 10px;
+  padding: 25px 10px 10px 10px;
   width: 15%;
   font-size: 30px;
+  margin-top: 50px;
 }
 
-.driver:hover{
+.driver:hover {
   text-decoration: none;
 }
-

@@ -21,7 +21,7 @@ function App() {
       style={{
         backgroundImage: `url(${pic2})`,
         backgroundSize: "cover",
-        height: "100vh",
+        height: "120vh",
         backgroundColor: "red",
       }}
     >
