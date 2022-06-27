@@ -74,16 +74,21 @@ class EditDriver extends Component {
                 <form onSubmit={this.UpdateStudent}>
                   <div className="form-group mb-3">
                     <label>vehicle_type</label>
-                    <input
-                      type="text"
-                      id="name"
-                      name="vehicle_type"
-                      pattern="[A-Za-z0-9]+"
-                      onChange={this.handleInput}
-                      value={this.state.vehicle_type}
-                      className="form-control"
-                      required
-                    />
+                    {/*<input*/}
+                    {/*  type="text"*/}
+                    {/*  id="name"*/}
+                    {/*  name="vehicle_type"*/}
+                    {/*  onChange={this.handleInput}*/}
+                    {/*  value={this.state.vehicle_type}*/}
+                    {/*  className="form-control"*/}
+                    {/*  required*/}
+                    {/*/>*/}
+                    <select id="cars" name="cars">
+                      <option value="volvo">Volvo</option>
+                      <option value="saab">Saab</option>
+                      <option value="fiat">Fiat</option>
+                      <option value="audi">Audi</option>
+                    </select>
                   </div>
                   <div className="form-group mb-3">
                     <label>vehicle_brand</label>
@@ -91,6 +96,7 @@ class EditDriver extends Component {
                       type="text"
                       id="address"
                       name="vehicle_brand"
+                      pattern="([A-z0-9À-ž\s]){2,}"
                       onChange={this.handleInput}
                       value={this.state.vehicle_brand}
                       className="form-control"
@@ -100,10 +106,9 @@ class EditDriver extends Component {
                   <div className="form-group mb-3">
                     <label>vehicle_color</label>
                     <input
-                      type="tel"
+                      type="color"
                       id="contact_no"
                       name="vehicle_color"
-                    //   pattern="[0-9]{10}"
                       onChange={this.handleInput}
                       value={this.state.vehicle_color}
                       className="form-control"
@@ -116,7 +121,6 @@ class EditDriver extends Component {
                       type="text"
                       id="email"
                       name="vehicle_number"
-                    //   pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
                       onChange={this.handleInput}
                       value={this.state.vehicle_number}
                       className="form-control"
@@ -126,7 +130,7 @@ class EditDriver extends Component {
                   <div className="form-group mb-3">
                     <label>numberofpassenger</label>
                     <input
-                      type="text"
+                      type="number"
                       id="nic"
                       name="numberofpassenger"
                       onChange={this.handleInput}

@@ -84,7 +84,7 @@ class EditVehicleOwner extends Component {
                   BACK
                 </Link>
               </div>
-              <div className="card-body" style={{height:'600px'}}>
+              <div className="card-body" style={{ height: "600px" }}>
                 <form onSubmit={this.UpdateStudent}>
                   <div className="row">
                     <div className="column">
@@ -152,10 +152,10 @@ class EditVehicleOwner extends Component {
                         />
                       </div>
                       <div className="form-group mb-3">
-                    <button type="submit" className="btn btn-primary">
-                      Update Vehicle Owner
-                    </button>
-                  </div>
+                        <button type="submit" className="btn btn-primary">
+                          Update Vehicle Owner
+                        </button>
+                      </div>
                     </div>
                     <div className="column">
                       <div className="form-group mb-3">
@@ -164,7 +164,7 @@ class EditVehicleOwner extends Component {
                           type="text"
                           id="name"
                           name="vehicle_type"
-                          pattern="[A-Za-z0-9]+"
+                          // pattern="[A-Za-z0-9]+"
                           onChange={this.handleInput}
                           value={this.state.vehicle_type}
                           className="form-control"
@@ -223,7 +223,6 @@ class EditVehicleOwner extends Component {
                       </div>
                     </div>
                   </div>
-                  
                 </form>
               </div>
             </div>

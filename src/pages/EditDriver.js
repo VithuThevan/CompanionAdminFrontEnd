@@ -101,7 +101,7 @@ class EditDriver extends Component {
                     />
                   </div>
                   <div className="form-group mb-3">
-                    <label>Contact_No</label>
+                    <label>Contact No</label>
                     <input
                       type="tel"
                       id="contact_no"
