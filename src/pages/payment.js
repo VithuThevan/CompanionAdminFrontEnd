@@ -3,7 +3,7 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import "../App.css";
 
-class VehicleOwner extends Component {
+class payment extends Component {
   state = {
     company: [],
     loading: true,
@@ -11,7 +11,7 @@ class VehicleOwner extends Component {
 
   async componentDidMount() {
     //driver
-    const res = await axios.get("http://127.0.0.1:8000/api/vehicleowner");
+    const res = await axios.get("http://127.0.0.1:8000/api/payment");
     console.log(res);
     this.setState({
       company: res.data.company,
@@ -19,12 +19,12 @@ class VehicleOwner extends Component {
     });
   }
 
-  deletecompany = async (e, id) => {
+  deletecompany = async (e, id) => {  
     const thisFlickDestroy = e.currentTarget;
     thisFlickDestroy.innerText = "Deleting";
 
     const res = await axios.delete(
-      `http://127.0.0.1:8000/api/delete-vehicleowner/${id}`
+      `http://127.0.0.1:8000/api/delete-driver/${id}`
     );
     if (res.data.status === 200) {
       thisFlickDestroy.closest("tr").remove();
@@ -33,17 +33,10 @@ class VehicleOwner extends Component {
   };
 
   render() {
-    let company_HTML_Table, company_HTML_Table2;
+    let company_HTML_Table;
     //company
     if (this.state.loading) {
       company_HTML_Table = (
-        <tr>
-          <td colSpan="8">
-            <h2>Loading....</h2>
-          </td>
-        </tr>
-      );
-      company_HTML_Table2 = (
         <tr>
           <td colSpan="8">
             <h2>Loading....</h2>
@@ -55,49 +48,19 @@ class VehicleOwner extends Component {
         return (
           <tr key={List.id}>
             <td>{List.id}</td>
-            <td>{List.NIC}</td>
-            <td>{List.Name}</td>
-            <td>{List.Address}</td>
-            <td>{List.Contact_No}</td>
-            <td>{List.Email}</td>
+            <td>{List.name}</td>
+            <td>{List.slocation}</td>
+            <td>{List.elocation}</td>
+            <td>{List.DistanceTravelled}</td>
+            <td></td>
+            <td></td>
             <td>
               <Link
-                to={`edit-vehicleowner1/${List.id}`}
+                to={`edit-driver/${List.id}`}
                 className="btn btn-success btn-sm"
               >
                 Edit
               </Link>
-            </td>
-            <td>
-              <button
-                type="button"
-                onClick={(e) => this.deletecompany(e, List.id)}
-                className="btn btn-danger btn-sm"
-              >
-                Delete
-              </button>
-            </td>
-          </tr>
-        );
-      });
-      company_HTML_Table2 = this.state.company.map((List) => {
-        return (
-          <tr key={List.id}>
-            <td>{List.id}</td>
-            <td>{List.Vehicle_type}</td>
-            <td>{List.Vehicle_brand}</td>
-            <td>{List.Vehicle_color}</td>
-            <td>{List.Vehicle_number}</td>
-            <td>{List.Numberofpassenger}</td>
-            <td>
-              <Link
-                to={`edit-vehicleowner/${List.id}`}
-                className="btn btn-success btn-sm"
-              >
-                Edit
-              </Link>
-            </td>
-            <td>
               <button
                 type="button"
                 onClick={(e) => this.deletecompany(e, List.id)}
@@ -117,20 +80,20 @@ class VehicleOwner extends Component {
           <div className="col-md-12">
             <div className="card">
               <div className="card-header">
-                <h4>Details of Vehicle Owners</h4>
+                <h4>Details of Drivers</h4>
               </div>
               <div className="card-body" style={{ overflow: "auto" }}>
                 <table className="table table-bordered table-striped">
                   <thead>
                     <tr>
                       <th>ID</th>
-                      <th>NIC</th>
-                      <th>Name</th>
-                      <th>Address</th>
-                      <th>Contact No</th>
-                      <th>Email</th>
-                      <th>Edit</th>
-                      <th>Delete</th>
+                      <th>Company</th>
+                      <th>Start Location</th>
+                      <th>End Location</th>
+                      <th>Distance Travelled</th>
+                      <th>Fare</th>
+                      <th>Image</th>
+                      <th>Approve</th>
                     </tr>
                   </thead>
                   <tbody>{company_HTML_Table}</tbody>
@@ -143,4 +106,4 @@ class VehicleOwner extends Component {
     );
   }
 }
-export default VehicleOwner;
+export default payment;

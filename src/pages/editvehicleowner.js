@@ -16,11 +16,6 @@ class EditVehicleOwner extends Component {
     contact_no: "",
     email: "",
     nic: "",
-    vehicle_type: "",
-    vehicle_brand: "",
-    vehicle_color: "",
-    vehicle_number: "",
-    numberofpassenger: "",
     error_list: [],
   };
 
@@ -33,7 +28,7 @@ class EditVehicleOwner extends Component {
   async componentDidMount() {
     let stud_id = this.props.params;
     const res = await axios.get(
-      `http://127.0.0.1:8000/api/edit-drivers/${stud_id.id}`
+      `http://127.0.0.1:8000/api/edit-vehicleowner/${stud_id.id}`
     );
     if (res.data.status === 200) {
       this.setState({
@@ -42,12 +37,7 @@ class EditVehicleOwner extends Component {
         contact_no: res.data.driver[0].Contact_No,
         email: res.data.driver[0].Email,
         nic: res.data.driver[0].NIC,
-        vehicle_type: res.data.driver[0].Vehicle_type,
-        vehicle_brand: res.data.driver[0].Vehicle_brand,
-        vehicle_color: res.data.driver[0].Vehicle_color,
-        vehicle_number: res.data.driver[0].Vehicle_number,
-        numberofpassenger: res.data.driver[0].Numberofpassenger,
-      });
+        });
     }
   }
 
@@ -55,7 +45,7 @@ class EditVehicleOwner extends Component {
     e.preventDefault();
     let stud_id = this.props.params;
     const res = await axios.post(
-      `http://127.0.0.1:8000/api/update-drivers/${stud_id.id}`,
+      `http://127.0.0.1:8000/api/update-vehicleowner/${stud_id.id}`,
       this.state
     );
     if (res.data.status === 200) {
@@ -86,8 +76,7 @@ class EditVehicleOwner extends Component {
               </div>
               <div className="card-body" style={{ height: "600px" }}>
                 <form onSubmit={this.UpdateStudent}>
-                  <div className="row">
-                    <div className="column">
+                  
                       <div className="form-group mb-3">
                         <label>Name</label>
                         <input
@@ -132,7 +121,6 @@ class EditVehicleOwner extends Component {
                           type="email"
                           id="email"
                           name="email"
-                          pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
                           onChange={this.handleInput}
                           value={this.state.email}
                           className="form-control"
@@ -156,73 +144,6 @@ class EditVehicleOwner extends Component {
                           Update Vehicle Owner
                         </button>
                       </div>
-                    </div>
-                    <div className="column">
-                      <div className="form-group mb-3">
-                        <label>vehicle_type</label>
-                        <input
-                          type="text"
-                          id="name"
-                          name="vehicle_type"
-                          // pattern="[A-Za-z0-9]+"
-                          onChange={this.handleInput}
-                          value={this.state.vehicle_type}
-                          className="form-control"
-                          required
-                        />
-                      </div>
-                      <div className="form-group mb-3">
-                        <label>vehicle_brand</label>
-                        <input
-                          type="text"
-                          id="address"
-                          name="vehicle_brand"
-                          onChange={this.handleInput}
-                          value={this.state.vehicle_brand}
-                          className="form-control"
-                          required
-                        />
-                      </div>
-                      <div className="form-group mb-3">
-                        <label>vehicle_color</label>
-                        <input
-                          type="tel"
-                          id="contact_no"
-                          name="vehicle_color"
-                          //   pattern="[0-9]{10}"
-                          onChange={this.handleInput}
-                          value={this.state.vehicle_color}
-                          className="form-control"
-                          required
-                        />
-                      </div>
-                      <div className="form-group mb-3">
-                        <label>vehicle_number</label>
-                        <input
-                          type="text"
-                          id="email"
-                          name="vehicle_number"
-                          //   pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
-                          onChange={this.handleInput}
-                          value={this.state.vehicle_number}
-                          className="form-control"
-                          required
-                        />
-                      </div>
-                      <div className="form-group mb-3">
-                        <label>numberofpassenger</label>
-                        <input
-                          type="text"
-                          id="nic"
-                          name="numberofpassenger"
-                          onChange={this.handleInput}
-                          value={this.state.numberofpassenger}
-                          className="form-control"
-                          required
-                        />
-                      </div>
-                    </div>
-                  </div>
                 </form>
               </div>
             </div>

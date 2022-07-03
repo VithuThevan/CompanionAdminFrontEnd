@@ -6,7 +6,7 @@ import "./navbar.css";
 import driver from "./pages/driver";
 import Student from "./pages/Student";
 import Addstudent from "./pages/Addstudent";
-import Editstudent from "./pages/Editstudent";
+import editstudent from "./pages/Editstudent";
 import EditDriver from "./pages/EditDriver";
 import Orders from "./pages/Orders";
 import VehicleOwner from "./pages/vehicle_owner";
@@ -14,6 +14,8 @@ import editvehicle from "./pages/editvehicle";
 import pic2 from "./companion2.jpeg";
 import pic1 from "./companion.jpeg";
 import editvehicleowner from "./pages/editvehicleowner";
+import Vehicle from "./pages/vehicle";
+import payment from "./pages/payment";
 
 function App() {
   return (
@@ -22,6 +24,7 @@ function App() {
         backgroundImage: `url(${pic2})`,
         backgroundSize: "cover",
         height: "120vh",
+        width: "100%",
         backgroundColor: "red",
       }}
     >
@@ -31,29 +34,42 @@ function App() {
             <img src={pic1} alt="Companion Logo" width="200px" height="55px" />
           </div>
           <div className="driver">
-            <NavLink to="/">Company</NavLink>
+            <NavLink to="/">Companies</NavLink>
           </div>
           <div className="driver">
-            <NavLink to="/driver">Driver</NavLink>
+            <NavLink to="/driver">Drivers</NavLink>
           </div>
           <div className="driver">
-            <NavLink to="/VehicleOwner">Vehicle</NavLink>
+            <NavLink to="/VehicleOwner">Vehicle Owners</NavLink>
+          </div>
+          <div className="driver">
+            <NavLink to="/Vehicle">Vehicles</NavLink>
           </div>
           <div className="driver">
             <NavLink to="/orders">Orders</NavLink>
+          </div>
+          <div className="driver">
+            <NavLink to="/payment">Unapproved Payments</NavLink>
           </div>
         </div>
         <br />
         <div className="content">
           <Route exact path="/" component={Student} />
           <Route path="/add-student" component={Addstudent} />
-          <Route path="/edit-student/:id" component={Editstudent} />
+          <Route path="/edit-student/:id" component={editstudent} />
+
           <Route path="/edit-driver/:id" component={EditDriver} />
           <Route path="/driver" component={driver} />
+
           <Route path="/orders" component={Orders} />
+
+          <Route path="/vehicle" component={Vehicle} />
+          <Route path="/edit-vehicle/:id" component={editvehicle} />
+
+          <Route path="/payment" component={payment} />
+
           <Route path="/VehicleOwner" component={VehicleOwner} />
           <Route path="/edit-vehicleowner/:id" component={editvehicleowner} />
-          <Route path="/edit-vehicleowner1/:id" component={editvehicleowner} />
         </div>
       </HashRouter>
     </div>

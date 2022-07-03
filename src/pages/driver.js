@@ -11,7 +11,7 @@ class driver extends Component {
 
   async componentDidMount() {
     //driver
-    const res = await axios.get("http://127.0.0.1:8000/api/drivers");
+    const res = await axios.get("http://127.0.0.1:8000/api/driver");
     console.log(res);
     this.setState({
       company: res.data.company,
@@ -24,7 +24,7 @@ class driver extends Component {
     thisFlickDestroy.innerText = "Deleting";
 
     const res = await axios.delete(
-      `http://127.0.0.1:8000/api/delete-drivers/${id}`
+      `http://127.0.0.1:8000/api/delete-driver/${id}`
     );
     if (res.data.status === 200) {
       thisFlickDestroy.closest("tr").remove();
@@ -49,10 +49,10 @@ class driver extends Component {
           <tr key={List.id}>
             <td>{List.id}</td>
             <td>{List.NIC}</td>
-            <td>{List.Name}</td>
-            <td>{List.Address}</td>
-            <td>{List.Contact_No}</td>
-            <td>{List.Email}</td>
+            <td>{List.Driver_Name}</td>
+            <td>{List.Driver_Address}</td>
+            <td>{List.Driver_Number}</td>
+            <td>{List.Driver_Email}</td>
             <td>
               <Link
                 to={`edit-driver/${List.id}`}
@@ -91,7 +91,7 @@ class driver extends Component {
                       <th>NIC</th>
                       <th>Name</th>
                       <th>Address</th>
-                      <th>Contact_No</th>
+                      <th>Contact No</th>
                       <th>Email</th>
                       <th>Edit</th>
                       <th>Delete</th>

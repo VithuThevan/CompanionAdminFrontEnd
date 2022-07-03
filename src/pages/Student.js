@@ -24,7 +24,7 @@ class Student extends Component {
     thisFlickDestroy.innerText = "Deleting";
 
     const res = await axios.delete(
-      `http://127.0.0.1:8000/api/delete-drivers/${id}`
+      `http://127.0.0.1:8000/api/delete-company/${id}`
     );
     if (res.data.status === 200) {
       thisFlickDestroy.closest("tr").remove();
@@ -48,10 +48,10 @@ class Student extends Component {
         return (
           <tr key={List.id}>
             <td>{List.id}</td>
-            <td>{List.Name}</td>
-            <td>{List.Address}</td>
-            <td>{List.Contact_No}</td>
-            <td>{List.Email}</td>
+            <td>{List.Company_Name}</td>
+            <td>{List.Company_Address}</td>
+            <td>{List.Company_Number}</td>
+            <td>{List.Company_Email}</td>
             <td>
               <Link
                 to={`edit-student/${List.id}`}
@@ -88,7 +88,7 @@ class Student extends Component {
                       <th>ID</th>
                       <th>Name</th>
                       <th>Address</th>
-                      <th>Contact_No</th>
+                      <th>Contact No</th>
                       <th>Email</th>
                       <th>Edit</th>
                       <th>Delete</th>

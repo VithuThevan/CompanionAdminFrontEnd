@@ -8,7 +8,7 @@ function withParams(Component) {
   return (props) => <Component {...props} params={useParams()} />;
 }
 
-class EditDriver extends Component {
+class editvehicle extends Component {
   state = {
     vehicle_type: "",
     vehicle_brand: "",
@@ -27,7 +27,7 @@ class EditDriver extends Component {
   async componentDidMount() {
     let stud_id = this.props.params;
     const res = await axios.get(
-      `http://127.0.0.1:8000/api/edit-drivers/${stud_id.id}`
+      `http://127.0.0.1:8000/api/edit-vehicle/${stud_id.id}`
     );
     if (res.data.status === 200) {
       this.setState({
@@ -35,7 +35,7 @@ class EditDriver extends Component {
         vehicle_brand: res.data.driver[0].Vehicle_brand,
         vehicle_color: res.data.driver[0].Vehicle_color,
         vehicle_number: res.data.driver[0].Vehicle_number,
-        numberofpassenger: res.data.driver[0].Numberofpassenger,
+        numberofpassenger: res.data.driver[0].Number_of_passenger,
       });
     }
   }
@@ -44,7 +44,7 @@ class EditDriver extends Component {
     e.preventDefault();
     let stud_id = this.props.params;
     const res = await axios.post(
-      `http://127.0.0.1:8000/api/update-drivers/${stud_id.id}`,
+      `http://127.0.0.1:8000/api/update-vehicle/${stud_id.id}`,
       this.state
     );
     if (res.data.status === 200) {
@@ -54,7 +54,7 @@ class EditDriver extends Component {
         text: res.data.message,
         button: "Ok!",
       });
-      this.props.history.push("/VehicleOwner");
+      this.props.history.push("/vehicle");
     }
   };
 
@@ -74,21 +74,15 @@ class EditDriver extends Component {
                 <form onSubmit={this.UpdateStudent}>
                   <div className="form-group mb-3">
                     <label>vehicle_type</label>
-                    {/*<input*/}
-                    {/*  type="text"*/}
-                    {/*  id="name"*/}
-                    {/*  name="vehicle_type"*/}
-                    {/*  onChange={this.handleInput}*/}
-                    {/*  value={this.state.vehicle_type}*/}
-                    {/*  className="form-control"*/}
-                    {/*  required*/}
-                    {/*/>*/}
-                    <select id="cars" name="cars">
-                      <option value="volvo">Volvo</option>
-                      <option value="saab">Saab</option>
-                      <option value="fiat">Fiat</option>
-                      <option value="audi">Audi</option>
-                    </select>
+                    <input
+                    type="text"
+                    id="name"
+                    name="vehicle_type"
+                    onChange={this.handleInput}
+                    value={this.state.vehicle_type}
+                    className="form-control"
+                    required
+                    />
                   </div>
                   <div className="form-group mb-3">
                     <label>vehicle_brand</label>
@@ -106,7 +100,7 @@ class EditDriver extends Component {
                   <div className="form-group mb-3">
                     <label>vehicle_color</label>
                     <input
-                      type="color"
+                      type="text"
                       id="contact_no"
                       name="vehicle_color"
                       onChange={this.handleInput}
@@ -154,4 +148,4 @@ class EditDriver extends Component {
   }
 }
 
-export default withParams(EditDriver);
+export default withParams(editvehicle);

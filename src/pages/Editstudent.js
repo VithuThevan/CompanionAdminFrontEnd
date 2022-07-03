@@ -8,7 +8,7 @@ function withParams(Component) {
   return (props) => <Component {...props} params={useParams()} />;
 }
 
-class Editstudent extends Component {
+class editstudent extends Component {
   state = {
     name: "",
     address: "",
@@ -26,14 +26,14 @@ class Editstudent extends Component {
   async componentDidMount() {
     let stud_id = this.props.params;
     const res = await axios.get(
-      `http://127.0.0.1:8000/api/edit-drivers/${stud_id.id}`
+      `http://127.0.0.1:8000/api/edit-company/${stud_id.id}`
     );
     if (res.data.status === 200) {
       this.setState({
-        name: res.data.driver[0].Name,
-        address: res.data.driver[0].Address,
-        contact_no: res.data.driver[0].Contact_No,
-        email: res.data.driver[0].Email,
+        name: res.data.driver[0].Company_Name,
+        address: res.data.driver[0].Company_Address,
+        contact_no: res.data.driver[0].Company_Number,
+        email: res.data.driver[0].Company_Email,
       });
     }
   }
@@ -42,7 +42,7 @@ class Editstudent extends Component {
     e.preventDefault();
     let stud_id = this.props.params;
     const res = await axios.post(
-      `http://127.0.0.1:8000/api/update-drivers/${stud_id.id}`,
+      `http://127.0.0.1:8000/api/update-company/${stud_id.id}`,
       this.state
     );
     if (res.data.status === 200) {
@@ -114,7 +114,6 @@ class Editstudent extends Component {
                       type="email"
                       id="email"
                       name="email"
-                      pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
                       onChange={this.handleInput}
                       value={this.state.email}
                       className="form-control"
@@ -136,4 +135,4 @@ class Editstudent extends Component {
   }
 }
 
-export default withParams(Editstudent);
+export default withParams(editstudent);
