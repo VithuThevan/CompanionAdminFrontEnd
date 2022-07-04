@@ -19,7 +19,7 @@ class payment extends Component {
     });
   }
 
-  deletecompany = async (e, id) => {  
+  deletecompany = async (e, id) => {
     const thisFlickDestroy = e.currentTarget;
     thisFlickDestroy.innerText = "Deleting";
 
@@ -53,20 +53,34 @@ class payment extends Component {
             <td>{List.elocation}</td>
             <td>{List.DistanceTravelled}</td>
             <td></td>
-            <td></td>
+            {/* <td>{List.File}</td> */}
+            <td>
+              <img
+                src={`http://127.0.0.1:8000/${List.File}`}
+                width="100px"
+                alt="image"
+              ></img>
+              <a href={`http://127.0.0.1:8000/${List.File}`} download={"Photo"}>
+                <br />
+                <br />
+                <button className="btn btn-danger btn-sm">Download</button>
+              </a>
+            </td>
             <td>
               <Link
                 to={`edit-driver/${List.id}`}
                 className="btn btn-success btn-sm"
               >
-                Edit
+                Approve
               </Link>
+              <br />
+              <br />
               <button
                 type="button"
                 onClick={(e) => this.deletecompany(e, List.id)}
                 className="btn btn-danger btn-sm"
               >
-                Delete
+                Reject
               </button>
             </td>
           </tr>
