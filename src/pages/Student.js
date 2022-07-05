@@ -28,7 +28,6 @@ class Student extends Component {
     );
     if (res.data.status === 200) {
       thisFlickDestroy.closest("tr").remove();
-      alert(res.data.message);
     }
   };
 

@@ -19,16 +19,27 @@ class payment extends Component {
     });
   }
 
-  deletecompany = async (e, id) => {
+  rejectcompany = async (e, id) => {
     const thisFlickDestroy = e.currentTarget;
-    thisFlickDestroy.innerText = "Deleting";
+    thisFlickDestroy.innerText = "rejecting";
 
-    const res = await axios.delete(
-      `http://127.0.0.1:8000/api/delete-driver/${id}`
+    const res = await axios.post(
+      `http://127.0.0.1:8000/api/reject-payment/${id}`
     );
     if (res.data.status === 200) {
       thisFlickDestroy.closest("tr").remove();
-      alert(res.data.message);
+    }
+  };
+
+  acceptcompany = async (e, id) => {
+    const thisFlickDestroy = e.currentTarget;
+    thisFlickDestroy.innerText = "approving";
+
+    const res = await axios.post(
+      `http://127.0.0.1:8000/api/accept-payment/${id}`
+    );
+    if (res.data.status === 200) {
+      thisFlickDestroy.closest("tr").remove();
     }
   };
 
@@ -58,26 +69,27 @@ class payment extends Component {
               <img
                 src={`http://127.0.0.1:8000/${List.File}`}
                 width="100px"
-                alt="image"
+                alt="payment slip"
               ></img>
               <a href={`http://127.0.0.1:8000/${List.File}`} download={"Photo"}>
                 <br />
                 <br />
-                <button className="btn btn-danger btn-sm">Download</button>
+                <button className="btn btn-primary btn-sm">View</button>
               </a>
             </td>
             <td>
-              <Link
-                to={`edit-driver/${List.id}`}
+              <button
+                type="button"
+                onClick={(e) => this.acceptcompany(e, List.id)}
                 className="btn btn-success btn-sm"
               >
                 Approve
-              </Link>
+              </button>
               <br />
               <br />
               <button
                 type="button"
-                onClick={(e) => this.deletecompany(e, List.id)}
+                onClick={(e) => this.rejectcompany(e, List.id)}
                 className="btn btn-danger btn-sm"
               >
                 Reject
@@ -94,7 +106,7 @@ class payment extends Component {
           <div className="col-md-12">
             <div className="card">
               <div className="card-header">
-                <h4>Details of Drivers</h4>
+                <h4>Details of Unapproved Payments</h4>
               </div>
               <div className="card-body" style={{ overflow: "auto" }}>
                 <table className="table table-bordered table-striped">

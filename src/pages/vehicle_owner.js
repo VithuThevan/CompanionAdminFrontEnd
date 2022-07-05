@@ -28,7 +28,6 @@ class VehicleOwner extends Component {
     );
     if (res.data.status === 200) {
       thisFlickDestroy.closest("tr").remove();
-      alert(res.data.message);
     }
   };
 
@@ -63,35 +62,6 @@ class VehicleOwner extends Component {
             <td>
               <Link
                 to={`edit-vehicleowner1/${List.id}`}
-                className="btn btn-success btn-sm"
-              >
-                Edit
-              </Link>
-            </td>
-            <td>
-              <button
-                type="button"
-                onClick={(e) => this.deletecompany(e, List.id)}
-                className="btn btn-danger btn-sm"
-              >
-                Delete
-              </button>
-            </td>
-          </tr>
-        );
-      });
-      company_HTML_Table2 = this.state.company.map((List) => {
-        return (
-          <tr key={List.id}>
-            <td>{List.id}</td>
-            <td>{List.Vehicle_type}</td>
-            <td>{List.Vehicle_brand}</td>
-            <td>{List.Vehicle_color}</td>
-            <td>{List.Vehicle_number}</td>
-            <td>{List.Numberofpassenger}</td>
-            <td>
-              <Link
-                to={`edit-vehicleowner/${List.id}`}
                 className="btn btn-success btn-sm"
               >
                 Edit

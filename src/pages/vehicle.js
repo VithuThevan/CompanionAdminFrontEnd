@@ -28,7 +28,6 @@ class Vehicle extends Component {
     );
     if (res.data.status === 200) {
       thisFlickDestroy.closest("tr").remove();
-      alert(res.data.message);
     }
   };
 
@@ -51,35 +50,6 @@ class Vehicle extends Component {
         </tr>
       );
     } else {
-      company_HTML_Table = this.state.company.map((List) => {
-        return (
-          <tr key={List.id}>
-            <td>{List.id}</td>
-            <td>{List.NIC}</td>
-            <td>{List.Name}</td>
-            <td>{List.Address}</td>
-            <td>{List.Contact_No}</td>
-            <td>{List.Email}</td>
-            <td>
-              <Link
-                to={`edit-vehicle/${List.id}`}
-                className="btn btn-success btn-sm"
-              >
-                Edit
-              </Link>
-            </td>
-            <td>
-              <button
-                type="button"
-                onClick={(e) => this.deletecompany(e, List.id)}
-                className="btn btn-danger btn-sm"
-              >
-                Delete
-              </button>
-            </td>
-          </tr>
-        );
-      });
       company_HTML_Table2 = this.state.company.map((List) => {
         return (
           <tr key={List.id}>

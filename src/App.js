@@ -26,12 +26,22 @@ function App() {
         height: "120vh",
         width: "100%",
         backgroundColor: "red",
+        
       }}
     >
       <HashRouter>
         <div className="navbar">
           <div className="driver1">
             <img src={pic1} alt="Companion Logo" width="200px" height="55px" />
+          </div>
+          <div className="driver">
+            <NavLink to="/payment">Unapproved Payments</NavLink>
+          </div>
+          <div className="driver">
+            <NavLink to="/payment">Approved Payments</NavLink>
+          </div>
+          <div className="driver">
+            <NavLink to="/payment">Rejected Payments</NavLink>
           </div>
           <div className="driver">
             <NavLink to="/">Companies</NavLink>
@@ -48,9 +58,7 @@ function App() {
           <div className="driver">
             <NavLink to="/orders">Orders</NavLink>
           </div>
-          <div className="driver">
-            <NavLink to="/payment">Unapproved Payments</NavLink>
-          </div>
+          
         </div>
         <br />
         <div className="content">
