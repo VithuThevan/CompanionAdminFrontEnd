@@ -1,6 +1,6 @@
 /*This page is to route all the web pages*/
 import React from "react";
-import { Route, HashRouter, NavLink } from "react-router-dom";
+import { Route, HashRouter, NavLink, useHistory, Link } from "react-router-dom";
 import "./App.css";
 import "./navbar.css";
 import driver from "./pages/driver";
@@ -13,9 +13,18 @@ import VehicleOwner from "./pages/vehicle_owner";
 import editvehicle from "./pages/editvehicle";
 import pic2 from "./companion2.jpeg";
 import pic1 from "./companion.jpeg";
-import editvehicleowner from "./pages/editvehicleowner";
+import EditVehicleOwner from "./pages/editvehicleowner";
 import Vehicle from "./pages/vehicle";
 import payment from "./pages/payment";
+import payment2 from "./pages/payment2";
+import payment1 from "./pages/payment1";
+import axios from "axios";
+import "react-dropdown/style.css";
+
+axios.defaults.baseURL = "http://127.0.0.1:8000/";
+axios.defaults.headers.post["Content-Type"] = "application/json";
+axios.defaults.headers.post["Accept"] = "application/json";
+// axios.defaults.withCredentials=true;
 
 function App() {
   return (
@@ -26,11 +35,10 @@ function App() {
         height: "120vh",
         width: "100%",
         backgroundColor: "red",
-        
       }}
     >
       <HashRouter>
-        <div className="navbar">
+        <nav className="navbar">
           <div className="driver1">
             <img src={pic1} alt="Companion Logo" width="200px" height="55px" />
           </div>
@@ -38,10 +46,10 @@ function App() {
             <NavLink to="/payment">Unapproved Payments</NavLink>
           </div>
           <div className="driver">
-            <NavLink to="/payment">Approved Payments</NavLink>
+            <NavLink to="/payment1">Approved Payments</NavLink>
           </div>
           <div className="driver">
-            <NavLink to="/payment">Rejected Payments</NavLink>
+            <NavLink to="/payment2">Rejected Payments</NavLink>
           </div>
           <div className="driver">
             <NavLink to="/">Companies</NavLink>
@@ -58,8 +66,7 @@ function App() {
           <div className="driver">
             <NavLink to="/orders">Orders</NavLink>
           </div>
-          
-        </div>
+        </nav>
         <br />
         <div className="content">
           <Route exact path="/" component={Student} />
@@ -75,9 +82,13 @@ function App() {
           <Route path="/edit-vehicle/:id" component={editvehicle} />
 
           <Route path="/payment" component={payment} />
+          <Route path="/payment1" component={payment1} />
+          <Route path="/payment2" component={payment2} />
 
           <Route path="/VehicleOwner" component={VehicleOwner} />
-          <Route path="/edit-vehicleowner/:id" component={editvehicleowner} />
+          <Route path="/edit-vehicleowner1/:id" component={EditVehicleOwner} />
+
+          <Route path="/login" component={EditVehicleOwner} />
         </div>
       </HashRouter>
     </div>

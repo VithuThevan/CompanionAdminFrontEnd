@@ -27,7 +27,7 @@ class editvehicle extends Component {
   async componentDidMount() {
     let stud_id = this.props.params;
     const res = await axios.get(
-      `http://127.0.0.1:8000/api/edit-vehicle/${stud_id.id}`
+      `api/edit-vehicle/${stud_id.id}`
     );
     if (res.data.status === 200) {
       this.setState({

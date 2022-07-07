@@ -11,7 +11,7 @@ class Student extends Component {
 
   async componentDidMount() {
     //company
-    const res = await axios.get("http://127.0.0.1:8000/api/companys");
+    const res = await axios.get("api/companys");
     console.log(res);
     this.setState({
       company: res.data.company,
@@ -24,7 +24,7 @@ class Student extends Component {
     thisFlickDestroy.innerText = "Deleting";
 
     const res = await axios.delete(
-      `http://127.0.0.1:8000/api/delete-company/${id}`
+      `delete-company/${id}`
     );
     if (res.data.status === 200) {
       thisFlickDestroy.closest("tr").remove();

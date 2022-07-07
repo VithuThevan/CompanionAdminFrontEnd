@@ -1,123 +1,91 @@
 import axios from "axios";
-import React, { Component } from "react";
-import { Link } from "react-router-dom";
-import swal from "sweetalert";
+import React, { useState } from "react";
+import { useHistory } from "react-router-dom";
 
-class Addstudent extends Component {
+function Addstudent() {
   //data types of input data
-  state = {
-    name: "",
-    address: "",
-    contact_no: "",
+  const history = useHistory();
+
+  const [loginInput, setLogin] = useState({
+    email: "",
+    password: "",
     error_list: [],
+  });
+
+  const handleInput = (e) => {
+    e.persist();
+    setLogin({ ...loginInput, [e.target.name]: e.target.value });
   };
-  handleInput = (e) => {
-    this.setState({
-      [e.target.name]: e.target.value,
+
+  const loginsubmit = (e) => {
+    e.preventDefault();
+    const data = {
+      email: loginInput.email,
+      password: loginInput.password,
+    };
+
+    axios.get("/sanctum/csrf-cookie").then((response) => {
+      axios.post("api/login", data).then((res) => {
+        if (res.data.status === 200) {
+          localStorage.setItem("auth_token", res.data.token);
+          localStorage.setItem("auth_name", res.data.username);
+          history.push("/");
+        } else if (res.data.status === 401) {
+        } else {
+          setLogin({ ...loginInput, error_list: res.data.validation_errors });
+        }
+      });
     });
   };
 
-  saveStudent = async (e) => {
-    e.preventDefault();
-
-    const res = await axios.post(
-      "http://127.0.0.1:8000/api/add-student",
-      this.state
-    );
-
-    if (res.data.status === 200) {
-      console.log(res.data.message);
-
-      swal({
-        title: "Success!",
-        text: res.data.message,
-        icon: "success",
-        button: "Ok!",
-      });
-
-      this.props.history.push("/");
-
-      this.setState({
-        name: "",
-        address: "",
-        contact_no: "",
-      });
-    } else {
-      this.setState({
-        error_list: res.data.validate_err,
-      });
-    }
-  };
-
-  render() {
-    return (
-      <div className="container">
-        <div className="row">
-          <div className="col-md-12">
-            <div className="card">
-              <div className="card-header">
-                <h4>Edit Students</h4>
-                <Link to={"/"} className="btn btn-primary btn-sm float-end">
-                  BACK
-                </Link>
-              </div>
-              <div className="card-body">
-                <form onSubmit={this.saveStudent}>
-                  <div className="form-group mb-3">
-                    <label>Company Name</label>
-                    <input
-                      type="text"
-                      name="name"
-                      onChange={this.handleInput}
-                      value={this.state.name}
-                      className="form-control"
-                      required
-                    />
-                    <span className="text-danger">
-                      {this.state.error_list.name}
-                    </span>
-                  </div>
-                  <div className="form-group mb-3">
-                    <label>Company Address</label>
-                    <input
-                      type="text"
-                      name="address"
-                      onChange={this.handleInput}
-                      value={this.state.address}
-                      className="form-control"
-                      required
-                    />
-                    <span className="text-danger">
-                      {this.state.error_list.course}
-                    </span>
-                  </div>
-                  <div className="form-group mb-3">
-                    <label>Contact_No</label>
-                    <input
-                      type="text"
-                      name="contact_no"
-                      onChange={this.handleInput}
-                      value={this.state.contact_no}
-                      className="form-control"
-                      required
-                    />
-                    <span className="text-danger">
-                      {this.state.error_list.email}
-                    </span>
-                  </div>
-                  <div className="form-group mb-3">
-                    <button type="submit" className="btn btn-primary">
-                      Save Student
-                    </button>
-                  </div>
-                </form>
-              </div>
+  return (
+    <div className="container py-5">
+      <div className="row justify-content-center">
+        <div className="col-md-6 ">
+          <div className="card">
+            <div className="card-header">
+              <h4>Login</h4>
+            </div>
+            <div className="card-body">
+              <form onSubmit={loginsubmit}>
+                <div className="form-group mb-1">
+                  <label>Email ID</label>
+                  <input
+                    type="email"
+                    name="email"
+                    onChange={handleInput}
+                    value={loginInput.email}
+                    className="form-control"
+                  />
+                  <span className="text-danger">
+                    {loginInput.error_list.email}
+                  </span>
+                </div>
+                <div className="form-group mb-3">
+                  <label>Password</label>
+                  <input
+                    type="password"
+                    name="password"
+                    onChange={handleInput}
+                    value={loginInput.password}
+                    className="form-control"
+                  />
+                  <span className="text-danger">
+                    {loginInput.error_list.email}
+                  </span>
+                </div>
+                <div className="form-group mb-3">
+                  <button type="submit" className="btn btn-primary">
+                    login
+                  </button>
+                </div>
+              </form>
             </div>
           </div>
         </div>
-      </div> //
-    );
-  }
+      </div>
+    </div>
+  );
 }
 
 export default Addstudent;
